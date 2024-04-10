@@ -6,23 +6,42 @@
     <title>2024 金馬奇幻影廳座位異動查詢</title>
 </head>
 <body>
-    <h1>2024 金馬奇幻影廳座位異動查詢 </h1>
-    <p>
-        第一行輸入原影廳號碼 e.g. 10 <br>
-        第二行輸入原座位位置 e.g. A10 <br>
-        newAudi 是新影廳號碼 <br>
-        newSeat 是新座位號碼 <br>
-        若沒有出現值需要跟金馬官方服務人員現場辦理 <br>
-    <p>
-    <label for="oldAudi">原影廳:</label>
-    <input type="text" id="oldAudi" placeholder="10">
+    <h1 class="responsive-margin">2024 金馬奇幻影廳座位異動查詢 </h1>
     <br>
-    <label for="oldSeat">原座位:</label>
-    <input type="text" id="oldSeat" placeholder="A10">
+    <label for="oldAudi" class="responsive-margin">原影廳:</label>
+    <input type="text" id="oldAudi" placeholder="10" class="responsive-margin">
     <br>
-    <button onclick="displayValue()">查看結果</button>
+    <label for="oldSeat" class="responsive-margin">原座位:</label>
+    <input type="text" id="oldSeat" placeholder="A10" class="responsive-margin">
     <br>
-    <p id="result"></p>
+    <button onclick="displayValue()" class="responsive-margin">查看結果</button>
+    <br>
+    
+
+    <table class="responsive-margin">
+    <caption>結果</caption>
+    <thead>
+        <tr>
+        <th>狀態</th>
+        <th>新影聽</th>
+        <th>新座位</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td data-label="狀態">
+            <p id="status" class="info"></p>
+        </td>
+        <td data-label="新影聽">
+            <p id="newAudi" class="info"></p>
+        </td>
+        <td data-label="新座位">
+            <p id="newSeat" class="info"></p>
+        </td>
+        </tr>
+    </tbody>
+    </table>
+    
     <br>
     <script>
 
@@ -32,15 +51,32 @@
 
         const seats = JSON.parse(jsonString);
 
+        document.getElementById("status").textContent = "請輸入票根影廳及座位";
+        document.getElementById("newAudi").textContent = "-";
+        document.getElementById("newSeat").textContent = "-";
         function displayValue() {
             let oldAudi;
             let oldSeat;
             oldAudi = document.getElementById("oldAudi").value;
             oldSeat = document.getElementById("oldSeat").value;
-            console.log("old:", oldAudi, oldSeat)
-            console.log(seats["10"]["A11"])
-            const value = seats[`${oldAudi}`] && seats[`${oldAudi}`][oldSeat] && JSON.stringify(seats[`${oldAudi}`][oldSeat], null, "\n");
-            document.getElementById("result").textContent = `Value of seats["${oldAudi}"]["${oldSeat}"]: ${value !== undefined ? value : 'Not found'}`;
+            const value = seats[`${oldAudi}`] && seats[`${oldAudi}`][oldSeat]  //&& JSON.stringify(seats[`${oldAudi}`][oldSeat], null, "\n");
+
+            if (value !== undefined) {
+                console.log("correct audi and seat")
+                document.getElementById("status").textContent = "查詢成功";
+                if (value["newAudi"] == "") {
+                    document.getElementById("newAudi").textContent = value["newSeat"];
+                    document.getElementById("newSeat").textContent = value["newSeat"];
+                } else {
+                    document.getElementById("newAudi").textContent = JSON.stringify(value["newAudi"]).substring(1).slice(0, -1) + " 廳";
+                    document.getElementById("newSeat").textContent = JSON.stringify(value["newSeat"]).substring(1).slice(0, -1);
+                }
+            } else {
+                console.log("wrong audi or seat")
+                document.getElementById("status").textContent = "輸入不完整或原座位輸入錯誤"
+                document.getElementById("newAudi").textContent = "-";
+                document.getElementById("newSeat").textContent = "-";
+            }
         }
     </script>
 </body>
