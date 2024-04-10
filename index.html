@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
     <title>JSON Viewer</title>
 </head>
 <body>
@@ -30,7 +31,7 @@
             oldSeat = document.getElementById("oldSeat").value;
             console.log("old:", oldAudi, oldSeat)
             console.log(seats["10"]["A11"])
-            const value = seats[`${oldAudi}`] && seats[`${oldAudi}`][oldSeat] && JSON.stringify(seats[`${oldAudi}`][oldSeat]);
+            const value = seats[`${oldAudi}`] && seats[`${oldAudi}`][oldSeat] && JSON.stringify(seats[`${oldAudi}`][oldSeat], null, "\n");
             document.getElementById("result").textContent = `Value of seats["${oldAudi}"]["${oldSeat}"]: ${value !== undefined ? value : 'Not found'}`;
         }
     </script>
