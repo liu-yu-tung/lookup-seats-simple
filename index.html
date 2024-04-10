@@ -6,16 +6,24 @@
     <title>JSON Viewer</title>
 </head>
 <body>
-    <h1>JSON Viewer</h1>
-    <label for="oldAudi">Enter oldAudi value:</label>
-    <input type="text" id="oldAudi">
+    <h1>2024 金馬奇幻影廳座位異動查詢 </h1>
+    <p>
+        第一行輸入原影廳號碼 e.g. 10 <br>
+        第二行輸入原座位位置 e.g. A10 <br>
+        newAudi 是新影廳號碼 <br>
+        newSeat 是新座位號碼 <br>
+        若沒有出現值需要跟金馬官方服務人員現場辦理 <br>
+    <p>
+    <label for="oldAudi">原影廳:</label>
+    <input type="text" id="oldAudi" placeholder="10">
     <br>
-    <label for="oldSeat">Enter oldSeat value:</label>
-    <input type="text" id="oldSeat">
+    <label for="oldSeat">原座位:</label>
+    <input type="text" id="oldSeat" placeholder="A10">
     <br>
-    <button onclick="displayValue()">Display Value</button>
+    <button onclick="displayValue()">查看結果</button>
+    <br>
     <p id="result"></p>
-
+    <br>
     <script>
 
         const a = 1;
