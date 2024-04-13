@@ -5,19 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
     <title>2024 金馬奇幻影廳座位異動查詢</title>
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+          new Darkmode().showWidget();
+        }
+        function toggleDarkMode() {
+            const darkmode = new Darkmode();
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
 </head>
 <body>
-    <h1 class="responsive-margin">2024 金馬奇幻影廳座位異動查詢 </h1>
+    <h3 class="responsive-margin" 
+    style="text-align: center;
+        ">2024 金馬奇幻影廳座位異動查詢 </h1>
     <br>
-    <label for="oldAudi" class="responsive-margin">原影廳:</label>
+    <button class="round-button" id="dark-mode" onclick="toggleDarkMode()" 
+        style="border-radius: 50%;
+            position: absolute;
+            top: 0px;
+            right: 0px;  
+        ">
+        🌓
+    </button>
+    <br>
+    <div style="margin: auto; text-align: center;">
+    <label for="oldAudi" class="responsive-margin" >原影廳:</label>
     <input type="text" id="oldAudi" placeholder="10" class="responsive-margin">
     <br>
     <label for="oldSeat" class="responsive-margin">原座位:</label>
     <input type="text" id="oldSeat" placeholder="A10" class="responsive-margin" input oninput="this.value = this.value.toUpperCase()">
     <br>
+    <br>
     <button onclick="displayValue(seats)" class="responsive-margin">查看結果</button>
     <br>
-    
+    </div>
 
     <table class="responsive-margin">
     <caption>結果</caption>
