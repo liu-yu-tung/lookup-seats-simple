@@ -11,26 +11,28 @@
         function toggleDarkMode() {
             if (darkmode === null) {
                 darkmode = new Darkmode();
-            } else {
-                darkmode.toggle();
             }
+            darkmode.toggle();
             console.log(darkmode.isActivated())
         }
     </script>
 </head>
 <body>
-    <h3 class="responsive-margin" 
-    style="text-align: center;
-        ">2024 金馬奇幻影廳座位異動查詢 </h1>
-    <br>
-    <button class="round-button" id="dark-mode" onclick="toggleDarkMode()" 
-        style="border-radius: 50%;
-            position: absolute;
-            top: 0px;
-            right: 0px;  
-        ">
-        🌓
-    </button>
+    <div>
+        <br>
+        <h3 class="responsive-margin" 
+        style="text-align: center; margin: auto;
+            ">2024 金馬奇幻影廳座位異動查詢 </h3>
+        <br>
+        <button class="round-button" id="dark-mode" onclick="toggleDarkMode()" 
+            style="border-radius: 50%;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;  
+            ">
+            🌓
+        </button>
+    </div>
     <br>
     <div style="margin: auto; text-align: center;">
     <label for="oldAudi" class="responsive-margin" >原影廳:</label>
