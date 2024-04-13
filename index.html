@@ -7,10 +7,15 @@
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script>
-        function addDarkmodeWidget() {
-          new Darkmode().showWidget();
+        let darkmode = null;
+        function toggleDarkMode() {
+            if (darkmode === null) {
+                darkmode = new Darkmode();
+            } else {
+                darkmode.toggle();
+            }
+            console.log(darkmode.isActivated())
         }
-        window.addEventListener('load', addDarkmodeWidget);
     </script>
 </head>
 <body>
@@ -18,6 +23,14 @@
     style="text-align: center;
         ">2024 金馬奇幻影廳座位異動查詢 </h1>
     <br>
+    <button class="round-button" id="dark-mode" onclick="toggleDarkMode()" 
+        style="border-radius: 50%;
+            position: absolute;
+            top: 0px;
+            right: 0px;  
+        ">
+        🌓
+    </button>
     <br>
     <div style="margin: auto; text-align: center;">
     <label for="oldAudi" class="responsive-margin" >原影廳:</label>
